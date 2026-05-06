@@ -1,7 +1,7 @@
 class Task {
   final String title;
   final String deadline;
-  final bool done;
+  var done; // mutable – potrzebne do zmiany statusu przez Checkbox
   final String priority;
 
   Task({
