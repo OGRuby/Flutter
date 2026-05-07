@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'task_repository.dart';
+import 'TaskApiService.dart';
+
+
 
 void main() {
   runApp(MyApp());
@@ -53,7 +56,34 @@ class FilterBar extends StatelessWidget {
     );
   }
 }
+class TaskListScreen extends StatefulWidget {
+  const TaskListScreen({super.key});
+  @override
+  State<TaskListScreen>createState() => _TaskListScreenState();
+}
+class _TaskListScreenState extends State<TaskListScreen>{
+  late Future<List<Task>> tasksFuture;
+  @override
+  void initState(){
+    super.initState();
+    tasksFuture = TaskApiService.fetchTasks();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Task>>(
+      future: tasksFuture,
+      builder: (context, snapshot) {
+        final tasks = snapshot.data ?? [];
+        return ListView.builder(
+          itemCount: tasks.length,
+          itemBuilder: (context, index) {
 
+          },
+        );
+      },
+    );
+  }
+  }
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
