@@ -129,7 +129,7 @@ class TaskListScreen extends StatefulWidget {
 }
 
 class _TaskListScreenState extends State<TaskListScreen> {
-  // late – przypisywane w initState, nie w konstruktorze
+
   late Future<List<Task>> tasksFuture;
 
   @override
